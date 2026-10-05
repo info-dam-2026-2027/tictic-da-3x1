@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tictic_da_1/screens/login_screen.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tictic_da_1/screens/register_screen.dart';
+import 'package:tictic_da_1/screens/welcome_screen.dart';
 import 'package:tictic_da_1/styles/color.dart';
-import 'package:tictic_da_1/styles/size.dart';
-import 'package:tictic_da_1/styles/text.dart';
-import 'package:tictic_da_1/widgets/carousel.dart';
+import 'package:tictic_da_1/widgets/text_custom.dart';
 
+import '../styles/size.dart';
 import '../widgets/custom_btn.dart';
+import '../widgets/w_back_button.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-  static const String routeName = '/';
+  static const String routeName = '/login';
 
   @override
   Widget build(BuildContext context) {
@@ -30,34 +30,32 @@ class WelcomeScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                WBackButton(),
                 SvgPicture.asset(
                   'assets/icons/logo.svg',
                   width:
                       MediaQuery.of(context).size.width /
                       kLogoWelcomeWidthSubDiviser,
                 ),
-                Carousel(),
-                SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Continuer sans compte'),
+                SizedBox(height: 64),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: CustomBtn(
+                      label: 'Je me connecte',
+                      action: () {},
+                      isDark: true,
+                    ),
+                  ),
                 ),
-
-                SizedBox(height: 24),
-
-                CustomBtn(
-                    label: 'Se connecter',
-                    action: () {
-                      Navigator.pushNamed(context, LoginScreen.routeName);
-                    },
-                    isDark: true
-                ),
-                CustomBtn(
-                  label: 'Créer un compte',
+                SizedBox(height: 64),
+                TextCustom(
+                  topText: 'Je n’ai pas de compte.',
+                  bottomText: 'Créer mon compte !',
                   action: () {
                     Navigator.pushNamed(context, RegisterScreen.routeName);
                   },
-                  isDark: false,
                 ),
               ],
             ),
