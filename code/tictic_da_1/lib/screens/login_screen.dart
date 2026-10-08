@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tictic_da_1/screens/register_screen.dart';
-import 'package:tictic_da_1/widgets/text_custom.dart';
+import 'package:tictic_da_1/widgets/partials/text_custom.dart';
 
 import '../styles/size.dart';
-import '../widgets/login_form.dart';
-import '../widgets/w_back_button.dart';
+import '../widgets/login/login_form.dart';
+import '../widgets/partials/w_back_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -36,9 +36,9 @@ class LoginScreen extends StatelessWidget {
                         MediaQuery.of(context).size.width /
                         kLogoWelcomeWidthSubDiviser,
                   ),
-                  SizedBox(height: 64),
+                  SizedBox(height: kSpacerForm),
                   LoginForm(),
-                  SizedBox(height: 64),
+                  SizedBox(height: kSpacerForm),
                   TextCustom(
                     topText: 'Je n’ai pas de compte.',
                     bottomText: 'Créer mon compte !',
@@ -55,4 +55,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-

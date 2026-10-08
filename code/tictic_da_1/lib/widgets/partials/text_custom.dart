@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_da_1/styles/size.dart';
+import 'package:tictic_da_1/styles/text.dart';
 
 class TextCustom extends StatelessWidget {
   const TextCustom({
@@ -17,25 +19,16 @@ class TextCustom extends StatelessWidget {
     return GestureDetector(
       onTap: action,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(kPaddingXS),
         child: Column(
           children: [
             Text(
               topText,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-              ),
+              style: kTextCustomTop,
             ),
             Text(
               bottomText,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline,
-              ),
+              style: kTextCustomBottom,
             ),
           ],
         ),

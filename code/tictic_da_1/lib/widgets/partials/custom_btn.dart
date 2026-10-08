@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tictic_da_1/styles/color.dart';
 
-import '../styles/text.dart';
+import '../../styles/size.dart';
+import '../../styles/text.dart';
 
 class CustomBtn extends StatelessWidget {
   const CustomBtn({
@@ -22,10 +23,10 @@ class CustomBtn extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isDark ? kDarkGreenColor : kLightGreenColor,
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(kBorderRadiusCircularMax),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: kPaddingS, vertical: kPaddingXS),
           child: Text(label, style: isDark ? kButtonTextDark : kButtonTextLight),
         ),
       ),

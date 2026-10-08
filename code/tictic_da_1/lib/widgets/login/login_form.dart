@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_da_1/styles/size.dart';
 
-import 'custom_btn.dart';
-import 'my_password_input.dart';
-import 'my_text_input.dart';
+import '../../validators/validators.dart';
+import '../partials/custom_btn.dart';
+import '../partials/my_password_input.dart';
+import '../partials/my_text_input.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -19,7 +21,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(kPadding),
       child: Form(
         key: _formKey,
         child: Column(
@@ -28,13 +30,9 @@ class _LoginFormState extends State<LoginForm> {
               controller: mailController,
               placeholder: 'Ex: johndoe@example.com',
               label: 'Adresse mail *',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
+              validation: Validators.email,
             ),
+            SizedBox(height: kSpacer),
             MyPasswordInput(passwordController: passwordController),
             CustomBtn(
               label: 'Se connecter',

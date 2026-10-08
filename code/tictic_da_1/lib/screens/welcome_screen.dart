@@ -1,63 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tictic_da_1/screens/login_screen.dart';
 import 'package:tictic_da_1/screens/register_screen.dart';
-import 'package:tictic_da_1/styles/color.dart';
-import 'package:tictic_da_1/styles/size.dart';
-import 'package:tictic_da_1/styles/text.dart';
-import 'package:tictic_da_1/widgets/carousel.dart';
 
-import '../widgets/custom_btn.dart';
+import '../styles/size.dart';
+import '../widgets/welcome/carousel.dart';
+import '../widgets/partials/custom_btn.dart';
+import '../widgets/partials/logo_application.dart';
+import '../widgets/welcome/separator_text.dart';
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
-  static const String routeName = '/';
+  static final String routeName = '/';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/img/back1.png'),
             fit: BoxFit.cover,
           ),
         ),
         child: SafeArea(
-          child: Center(
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                SvgPicture.asset(
-                  'assets/icons/logo.svg',
-                  width:
-                      MediaQuery.of(context).size.width /
-                      kLogoWelcomeWidthSubDiviser,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: kWelcomeLogoPaddingTop,
+                    bottom: kWelcomeLogoPaddingBottom,
+                  ),
+                  child: LogoApplication(),
                 ),
                 Carousel(),
-                SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Continuer sans compte'),
-                ),
-
-                SizedBox(height: 24),
-
+                SizedBox(height: kSpacer * 4,),
                 CustomBtn(
-                    label: 'Se connecter',
-                    action: () {
-                      Navigator.pushNamed(context, LoginScreen.routeName);
-                    },
-                    isDark: true
+                  action: () => {Navigator.pushNamed(context, '/home')},
+                  label: 'Continuer sans compte',
+                  isDark: true,
                 ),
-                CustomBtn(
-                  label: 'Créer un compte',
-                  action: () {
-                    Navigator.pushNamed(context, RegisterScreen.routeName);
-                  },
-                  isDark: false,
+                SeparatorText(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kPadding,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomBtn(
+                        action: () => {Navigator.pushNamed(context, LoginScreen.routeName)},
+                        label: 'Se connecter',
+                        isDark: false,
+                      ),
+                      SizedBox(width: kSpacer,),
+                      CustomBtn(
+                        action: () => {Navigator.pushNamed(context, RegisterScreen.routeName)},
+                        label: 'S’inscrire',
+                        isDark: false,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
