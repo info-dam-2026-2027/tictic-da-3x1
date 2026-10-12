@@ -44,3 +44,32 @@ const TextStyle kTextInputLabel = TextStyle(
   fontSize: 24,
   fontFamily: 'Poppins',
 );
+
+const TextStyle kHomeWelcomeMessage = TextStyle(
+  color: kBlack,
+  fontWeight: FontWeight.w700,
+  fontSize: 24,
+  fontFamily: 'Poppins',
+);
+
+const TextStyle kHomeWelcomeSubMessage = TextStyle(
+  color: kBlack,
+  fontWeight: FontWeight.w400,
+  fontSize: 18,
+  fontStyle: FontStyle.italic,
+  fontFamily: 'Poppins',
+);
+
+const TextStyle kHomeBoxText= TextStyle(
+  color: kBlack,
+  fontWeight: FontWeight.w500,
+  fontSize: 18,
+  fontFamily: 'Poppins',
+);
+
+const TextStyle kHomeBoxNumber= TextStyle(
+  color: kBlack,
+  fontWeight: FontWeight.w500,
+  fontSize: 24,
+  fontFamily: 'Poppins',
+);
