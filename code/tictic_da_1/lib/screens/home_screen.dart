@@ -18,6 +18,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final _itemsTitle = [
+    'Total à recevoir',
+    'Total à donner',
+    'Total général',
+  ];
+
+  final _itemsPrice = [
+    '80€',
+    '100€',
+    '120€',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,30 +120,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(kPaddingXL),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: kWhiteColor,
-                        borderRadius: BorderRadius.circular(kPadding),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(kPadding),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text('Total à payer', style: kHomeBoxText,),
-                            SizedBox(height: 4,),
-                            Text('80€', style: kHomeBoxNumber,)
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                padding: EdgeInsets.symmetric(vertical: kPaddingXL),
+                child: Container(
+                  height: 120,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _itemsTitle.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardInfoSlider(title: _itemsTitle[index], price: _itemsPrice[index]);
+                    },
+                    separatorBuilder: (BuildContext context, _) {
+                      return SizedBox(width: 24,);
+                    },
+                    //CardInfoSlider(title: 'Total à payer :', price: '80€',),
+                  ),
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CardInfoSlider extends StatelessWidget {
+  const CardInfoSlider({super.key, required this.title, required this.price});
+
+  final String title;
+  final String price;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: kWhiteColor,
+        borderRadius: BorderRadius.circular(kPadding),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(kPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(title, style: kHomeBoxText),
+            SizedBox(height: 4),
+            Text(price, style: kHomeBoxNumber),
           ],
         ),
       ),
